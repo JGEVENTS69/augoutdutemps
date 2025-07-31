@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import LogoPizza from "@/assets/logo-pizza.png";
+import LogoPizza from "@/assets/Logo Pizza@4x.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
