@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Outfit:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Warm Italian-inspired color palette */
+    --background: 35 20% 98%;
+    --foreground: 20 15% 15%;
+
+    --card: 35 20% 99%;
+    --card-foreground: 20 15% 15%;
+
+    --popover: 35 20% 99%;
+    --popover-foreground: 20 15% 15%;
+
+    /* Rich brick red as primary */
+    --primary: 12 85% 55%;
+    --primary-foreground: 35 20% 98%;
+    
+    /* Warm cream secondary */
+    --secondary: 35 35% 92%;
+    --secondary-foreground: 20 15% 25%;
+
+    /* Soft muted tones */
+    --muted: 35 25% 95%;
+    --muted-foreground: 20 10% 45%;
+
+    /* Warm wood accent */
+    --accent: 30 45% 88%;
+    --accent-foreground: 20 15% 25%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 35 20% 98%;
+
+    --border: 35 20% 88%;
+    --input: 35 20% 92%;
+    --ring: 12 85% 55%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Warm dark theme */
+    --background: 20 25% 8%;
+    --foreground: 35 15% 92%;
+
+    --card: 20 25% 10%;
+    --card-foreground: 35 15% 92%;
+
+    --popover: 20 25% 10%;
+    --popover-foreground: 35 15% 92%;
+
+    --primary: 12 85% 65%;
+    --primary-foreground: 20 25% 8%;
+
+    --secondary: 20 15% 18%;
+    --secondary-foreground: 35 15% 88%;
+
+    --muted: 20 15% 16%;
+    --muted-foreground: 35 10% 65%;
+
+    --accent: 30 25% 22%;
+    --accent-foreground: 35 15% 88%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 35 15% 92%;
+
+    --border: 20 15% 18%;
+    --input: 20 15% 18%;
+    --ring: 12 85% 65%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  }
+
+  /* Custom gradients and design tokens */
+  :root {
+    --gradient-warm: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(30 85% 45%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%);
+    --shadow-warm: 0 10px 30px -10px hsl(var(--primary) / 0.2);
+    --shadow-soft: 0 4px 20px -4px hsl(20 15% 15% / 0.1);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Custom scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Beautiful animations for pizza theme */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.6s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.4s ease-out;
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-warm);
+  }
+
+  /* Typography improvements */
+  .text-balance {
+    text-wrap: balance;
+  }
+}
