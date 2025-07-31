@@ -3,6 +3,17 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Clock, Phone, ArrowRight, Star } from "lucide-react";
 import { useState, useEffect } from "react";
+import KiosqueImg from '@/assets/Kiosque.png';
+import RestaurantImg from '@/assets/Restaurant.png';
+import CamionImg from '@/assets/Camion.png';
+
+import LogoGoogle from '@/assets/logo_google.png';
+
+import Avis1Img from '@/assets/avis1.png';
+import Avis2Img from '@/assets/avis2.png';
+import Avis3Img from '@/assets/avis3.png';
+
+import PizzaVideo from '@/assets/pizza_video.mp4';
 
 const Accueil = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -73,7 +84,7 @@ const Accueil = () => {
       horaires: "Du Lundi au Vendredi : 11H00 – 13H30 (Tous les midis)",
       statut: "Nous sommes fermé le weekend",
       type: "Sur place ou à emporter",
-      image: "src/assets/Kiosque.png",
+      image: KiosqueImg,
       alt: "Kiosque pizzeria avec comptoir de service"
     },
     {
@@ -81,7 +92,7 @@ const Accueil = () => {
       adresse: "2 Rue des Monts, 69280 Sainte-Consorce",
       horaires: "Uniquement le Mercredi & Samedi : 18H00 – 21H00",
       type: "Sur place ou à emporter",
-      image: "src/assets/Restaurant.png",
+      image: RestaurantImg,
       alt: "Intérieur chaleureux de la boutique pizzeria"
     },
     {
@@ -89,7 +100,7 @@ const Accueil = () => {
       adresse: "Place de l'église, 69510 Rontalon",
       horaires: "Uniquement le Jeudi : 18H00 – 21H00",
       type: "À emporter uniquement",
-      image: "src/assets/Camion.png",
+      image: CamionImg,
       alt: "Food truck pizza sur la place de l'église"
     },
     {
@@ -97,7 +108,7 @@ const Accueil = () => {
       adresse: "Place de l'église, 69290 Pollionnay",
       horaires: "Uniquement le Vendredi : 18H00 – 21H00",
       type: "À emporter uniquement",
-      image: "src/assets/Camion.png",
+      image: CamionImg,
       alt: "Camion pizza ambulant avec four à bois"
     },
   ];
@@ -114,7 +125,7 @@ const Accueil = () => {
             playsInline
             className="w-full h-full object-cover"
           >
-            <source src="src/assets/pizza_video.mp4" type="video/mp4" />
+            <source src={PizzaVideo} type="video/mp4" />
             Votre navigateur ne supporte pas la vidéo HTML5.
           </video>
           {/* Filtre flou + assombrissement */}
@@ -250,7 +261,7 @@ const Accueil = () => {
           </div>
 
           <div className="flex items-center justify-center space-x-4 mb-8">
-            <img src="src/assets/logo_google.png" alt="Google" className="h-6" />
+            <img src={LogoGoogle} alt="Google" className="h-6" />
             <div className="flex items-center space-x-1">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
@@ -277,7 +288,7 @@ const Accueil = () => {
               </p>
               <div className="flex items-center">
                 <div className="w-8 h-8 rounded-full bg-gray-300 mr-3 overflow-hidden">
-                  <img src="src/assets/avis1.png" alt="Client" className="w-full h-full object-cover" />
+                  <img src={Avis1Img} alt="Client" className="w-full h-full object-cover" />
                 </div>
                 <span className="text-sm font-medium">Philippe Villain</span>
               </div>
@@ -299,7 +310,7 @@ const Accueil = () => {
               </p>
               <div className="flex items-center">
                 <div className="w-8 h-8 rounded-full bg-gray-300 mr-3 overflow-hidden">
-                  <img src="src/assets/avis2.png" alt="Client" className="w-full h-full object-cover" />
+                  <img src={Avis2Img} alt="Client" className="w-full h-full object-cover" />
                 </div>
                 <span className="text-sm font-medium">Marco Agas</span>
               </div>
@@ -322,7 +333,7 @@ const Accueil = () => {
               </p>
               <div className="flex items-center">
                 <div className="w-8 h-8 rounded-full bg-gray-300 mr-3 overflow-hidden">
-                  <img src="src/assets/avis3.png" alt="Client" className="w-full h-full object-cover" />
+                  <img src={Avis3Img} alt="Client" className="w-full h-full object-cover" />
                 </div>
                 <span className="text-sm font-medium">
 Benjamin FERRY</span>
