@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import LogoPizza from "@/assets/logo-pizza.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,10 +30,10 @@ const Navigation = () => {
           <div className="absolute z-50 left-1/2 transform -translate-x-1/2 -bottom-22 md:-bottom-32">
             <button onClick={() => handleNavClick("/")} className="group">
               <img
-                src="src/assets/Logo Pizza@4x.png"
-                alt="Logo Au Goût du Temps"
-                className="h-32 w-32 md:h-44 md:w-44 object-contain rounded-full border-[#F9F8F6] border-2 shadow-lg bg-white group-hover:scale-105 transition-transform duration-300"
-              />
+  src={LogoPizza}
+  alt="Logo Au Goût du Temps"
+  className="h-32 w-32 md:h-44 md:w-44 object-contain rounded-full border-[#F9F8F6] border-2 shadow-lg bg-white group-hover:scale-105 transition-transform duration-300"
+/>
             </button>
           </div>
 
