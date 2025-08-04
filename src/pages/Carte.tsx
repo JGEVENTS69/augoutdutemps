@@ -139,13 +139,13 @@ const Carte = () => {
     <div className="min-h-screen py-16">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 mt-20">
           <h1 className="text-5xl font-serif font-bold text-foreground mb-4">
             Notre Carte
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-            Découvrez nos pizzas artisanales préparées avec des ingrédients 
-            sélectionnés et un savoir-faire authentiquement italien.
+          <p className="text-lg font-sans text-muted-foreground max-w-2xl mx-auto mb-8">
+            Découvrez nos pizzas artisanales préparées avec des ingrédients
+            frais et de saison.
           </p>
           <Button variant="outline" className="hover-lift">
             <Download className="mr-2 h-4 w-4" />
@@ -172,8 +172,8 @@ const Carte = () => {
         {/* Categories */}
         <div className="space-y-12">
           {categories.map((categorie, categoryIndex) => (
-            <div 
-              key={categoryIndex} 
+            <div
+              key={categoryIndex}
               className="animate-fade-up"
               style={{ animationDelay: `${categoryIndex * 0.1}s` }}
             >
@@ -181,23 +181,23 @@ const Carte = () => {
                 <h2 className="text-3xl font-serif font-bold text-foreground mb-2">
                   {categorie.nom}
                 </h2>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground font-sans">
                   {categorie.description}
                 </p>
               </div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {categorie.pizzas.map((pizza, pizzaIndex) => (
-                  <Card 
-                    key={pizzaIndex} 
+                  <Card
+                    key={pizzaIndex}
                     className="hover-lift animate-scale-in overflow-hidden"
                     style={{ animationDelay: `${(categoryIndex * 0.1) + (pizzaIndex * 0.05)}s` }}
                   >
                     {/* Image de la pizza */}
                     {pizza.image && (
                       <div className="relative h-48 overflow-hidden">
-                        <img 
-                          src={pizza.image} 
+                        <img
+                          src={pizza.image}
                           alt={pizza.nom}
                           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                         />
@@ -211,17 +211,28 @@ const Carte = () => {
                         </div>
                       </div>
                     )}
-                    
+
                     <CardHeader className="pb-3">
                       <CardTitle className="flex items-center justify-between">
-                        <span className="text-lg">{pizza.nom}</span>
+                        <h1 className="font-serif md:text-2xl text-2xl">
+                          <span
+                            className="text-black mx-1 font-extrabold mb-6 relative inline-block stroke-current"
+                          >
+                            {pizza.nom}
+                            <svg className="absolute -bottom-0.5 w-full max-h-1.5" viewBox="0 0 55 5" xmlns="http://www.w3.org/2000/svg"
+                              preserveAspectRatio="none">
+                              <path d="M0.652466 4.00002C15.8925 2.66668 48.0351 0.400018 54.6853 2.00002" stroke-width="2"></path>
+                            </svg>
+                          </span>
+                        </h1>
+
                         <span className="text-xl font-bold text-primary">
                           {pizza.prix}
                         </span>
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="pt-0">
-                      <p className="text-sm text-muted-foreground leading-relaxed">
+                      <p className="text-sm text-muted-foreground font-sans leading-relaxed">
                         {pizza.ingredients}
                       </p>
                     </CardContent>
@@ -233,12 +244,12 @@ const Carte = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-16 p-8 bg-primary/5 rounded-lg">
-          <h3 className="text-2xl font-serif font-bold text-foreground mb-4">
-            Une envie ? Passez commande !
+        <div className="text-center mt-16 p-8 bg-[#1A2C44] rounded-lg">
+          <h3 className="text-2xl font-serif font-bold text-white mb-4">
+            Une envie ? Passez commande rapidement!
           </h3>
-          <p className="text-muted-foreground mb-6">
-            Choisissez votre point de retrait et l'heure qui vous convient
+          <p className="text-muted-foreground font-sans text-white mb-6">
+            Choisissez votre point de retrait (selon les horaires d'ouverture) et l'heure qui vous convient.
           </p>
           <Button size="lg" className="hover-lift">
             Commander maintenant
