@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import LogoPizza from "@/assets/Logo Pizza@4x.png";
+import { useNavigate } from "react-router-dom";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,11 +16,14 @@ const Navigation = () => {
     { name: "Contact", href: "/contact" },
   ];
 
+  const navigate = useNavigate(); // 
+
   const isActive = (path) => activeItem === path;
 
   const handleNavClick = (href) => {
     setActiveItem(href);
     setIsOpen(false);
+    navigate(href);
   };
 
   return (

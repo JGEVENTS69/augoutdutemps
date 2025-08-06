@@ -9,11 +9,10 @@ import { Badge } from "@/components/ui/badge";
 import { MapPin, Clock, ShoppingCart, Plus, Minus } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import margheritaImg from "@/assets/pizza-margherita.jpg";
-import reginaImg from "@/assets/pizza-regina.jpg";
-import quattroStagioniImg from "@/assets/pizza-quattro-stagioni.jpg";
-import diavolaImg from "@/assets/pizza-diavola.jpg";
-import reineBlancheImg from "@/assets/pizza-reine-blanche.jpg";
-import chevreMielImg from "@/assets/pizza-chevre-miel.jpg";
+import kiosqueImg from "@/assets/Kiosque.png";
+import montsImg from "@/assets/Restaurant.png";
+import rontalonImg from "@/assets/Camion.png";
+import pollionnayImg from "@/assets/Camion.png";
 
 const Commander = () => {
   const { toast } = useToast();
@@ -30,34 +29,64 @@ const Commander = () => {
     commentaires: "",
   });
 
+  const estOuvert = (point) => {
+    const now = new Date();
+    const jourActuel = now.toLocaleDateString("fr-FR", { weekday: "long" });
+    const heureActuelle = now.getHours() + now.getMinutes() / 60;
+
+    const [heureDebut, minuteDebut] = point.debut.split(":").map(Number);
+    const [heureFin, minuteFin] = point.fin.split(":").map(Number);
+
+    const debut = heureDebut + minuteDebut / 60;
+    const fin = heureFin + minuteFin / 60;
+
+    return point.jours.includes(jourActuel) && heureActuelle >= debut && heureActuelle <= fin;
+  };
+
   const pointsDeVente = [
     {
       id: "kiosque",
-      nom: "Kiosque Principal",
+      nom: "Au Kiosque",
       adresse: "1 rue des marronniers, 69280 Sainte Consorce",
       horaires: "Lun-Ven : 11:00 – 13:30",
+      jours: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"],
+      debut: "11:00",
+      fin: "13:30",
       creneaux: ["11:15", "11:30", "11:45", "12:00", "12:15", "12:30", "13:00", "13:15"],
+      image: kiosqueImg,
     },
     {
       id: "monts",
-      nom: "2 Rue des Monts",
+      nom: "La Boutique",
       adresse: "2 Rue des Monts, 69280 Sainte-Consorce",
       horaires: "Mer & Sam : 18:00 – 21:00",
+      jours: ["Mercredi", "Samedi"],
+      debut: "18:00",
+      fin: "21:00",
       creneaux: ["18:15", "18:30", "18:45", "19:00", "19:15", "19:30", "20:00", "20:15", "20:30"],
+      image: montsImg,
     },
     {
       id: "rontalon",
-      nom: "Rontalon",
+      nom: "Le Camion à Rontalon",
       adresse: "Place de l'église, 69510 Rontalon",
       horaires: "Jeudi : 18:00 – 21:00",
+      jours: ["Jeudi"],
+      debut: "18:00",
+      fin: "21:00",
       creneaux: ["18:15", "18:30", "18:45", "19:00", "19:15", "19:30", "20:00", "20:15", "20:30"],
+      image: rontalonImg,
     },
     {
       id: "pollionnay",
-      nom: "Pollionnay",
+      nom: "Le Camion à Pollionnay",
       adresse: "Place de l'église, 69290 Pollionnay",
       horaires: "Vendredi : 18:00 – 21:00",
+      jours: ["Vendredi"],
+      debut: "18:00",
+      fin: "21:00",
       creneaux: ["18:15", "18:30", "18:45", "19:00", "19:15", "19:30", "20:00", "20:15", "20:30"],
+      image: pollionnayImg,
     },
   ];
 
@@ -121,7 +150,7 @@ const Commander = () => {
     <div className="min-h-screen py-16">
       <div className="container mx-auto px-4 max-w-4xl">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 mt-20">
           <h1 className="text-5xl font-serif font-bold text-foreground mb-4">
             Commander
           </h1>
@@ -136,19 +165,17 @@ const Commander = () => {
             {[1, 2, 3, 4].map((etape) => (
               <div key={etape} className="flex items-center">
                 <div
-                  className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
-                    etape <= etapeActuelle
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-muted text-muted-foreground"
-                  }`}
+                  className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${etape <= etapeActuelle
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted text-muted-foreground"
+                    }`}
                 >
                   {etape}
                 </div>
                 {etape < 4 && (
                   <div
-                    className={`w-12 h-0.5 ${
-                      etape < etapeActuelle ? "bg-primary" : "bg-muted"
-                    }`}
+                    className={`w-12 h-0.5 ${etape < etapeActuelle ? "bg-primary" : "bg-muted"
+                      }`}
                   />
                 )}
               </div>
@@ -163,19 +190,34 @@ const Commander = () => {
               <CardTitle>1. Choisissez votre point de retrait</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              {pointsDeVente.map((point) => (
-                <Card
-                  key={point.id}
-                  className={`cursor-pointer hover-lift transition-all ${
-                    commande.pointVente === point.id
-                      ? "ring-2 ring-primary bg-primary/5"
-                      : ""
-                  }`}
-                  onClick={() => setCommande({ ...commande, pointVente: point.id })}
-                >
-                  <CardContent className="p-4">
-                    <div className="flex justify-between items-start">
-                      <div className="space-y-2">
+              {pointsDeVente.filter(point => estOuvert(point)).length > 0 ? (
+                pointsDeVente
+                  .filter(point => estOuvert(point))
+                  .map((point) => (
+                    <Card
+                      key={point.id}
+                      className={`cursor-pointer hover-lift transition-all flex flex-row-reverse ${commande.pointVente === point.id
+                          ? "ring-2 ring-primary bg-primary/5"
+                          : ""
+                        }`}
+                      onClick={() => setCommande({ ...commande, pointVente: point.id })}
+                    >
+                      {/* Image à droite */}
+                      <div className="relative w-1/3 min-h-[150px]">
+                        <img
+                          src={point.image}
+                          alt={point.nom}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute top-2 right-2">
+                          <span className="px-2 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-600">
+                            Ouvert
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Contenu à gauche */}
+                      <div className="w-2/3 p-4 space-y-2">
                         <h3 className="font-semibold">{point.nom}</h3>
                         <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                           <MapPin className="h-4 w-4" />
@@ -185,24 +227,32 @@ const Commander = () => {
                           <Clock className="h-4 w-4" />
                           <span>{point.horaires}</span>
                         </div>
+                        {commande.pointVente === point.id && <Badge>Sélectionné</Badge>}
                       </div>
-                      {commande.pointVente === point.id && (
-                        <Badge>Sélectionné</Badge>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-              
-              <div className="pt-4">
-                <Button
-                  className="w-full hover-lift"
-                  disabled={!commande.pointVente}
-                  onClick={() => setEtapeActuelle(2)}
-                >
-                  Continuer
-                </Button>
-              </div>
+                    </Card>
+                  ))
+              ) : (
+                <div className="text-center py-8">
+                  <p className="text-lg text-muted-foreground">
+                    Aucun point de vente n'est actuellement ouvert.
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-2">
+                    Veuillez consulter nos horaires d'ouverture.
+                  </p>
+                </div>
+              )}
+
+              {pointsDeVente.filter(point => estOuvert(point)).length > 0 && (
+                <div className="pt-4">
+                  <Button
+                    className="w-full hover-lift"
+                    disabled={!commande.pointVente}
+                    onClick={() => setEtapeActuelle(2)}
+                  >
+                    Continuer
+                  </Button>
+                </div>
+              )}
             </CardContent>
           </Card>
         )}
@@ -229,7 +279,7 @@ const Commander = () => {
                   </Button>
                 ))}
               </div>
-              
+
               <div className="flex space-x-3 pt-4">
                 <Button
                   variant="outline"
@@ -263,8 +313,8 @@ const Commander = () => {
                     <Card key={index} className="hover-lift overflow-hidden">
                       {/* Image de la pizza */}
                       <div className="relative h-32 overflow-hidden">
-                        <img 
-                          src={pizza.image} 
+                        <img
+                          src={pizza.image}
                           alt={pizza.nom}
                           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                         />
@@ -274,7 +324,7 @@ const Commander = () => {
                           </span>
                         </div>
                       </div>
-                      
+
                       <CardContent className="p-4">
                         <div className="mb-2">
                           <h3 className="font-semibold text-lg">{pizza.nom}</h3>
@@ -332,14 +382,14 @@ const Commander = () => {
                       </div>
                     </div>
                   ))}
-                  
+
                   <div className="border-t pt-4">
                     <div className="flex justify-between items-center text-lg font-bold">
                       <span>Total</span>
                       <span>{calculerTotal()}€</span>
                     </div>
                   </div>
-                  
+
                   <div className="flex space-x-3">
                     <Button
                       variant="outline"

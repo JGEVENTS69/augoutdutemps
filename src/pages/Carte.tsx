@@ -2,128 +2,201 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Download, Leaf, Flame } from "lucide-react";
-import margheritaImg from "@/assets/pizza-margherita.jpg";
-import reginaImg from "@/assets/pizza-regina.jpg";
-import quattroStagioniImg from "@/assets/pizza-quattro-stagioni.jpg";
-import diavolaImg from "@/assets/pizza-diavola.jpg";
-import reineBlancheImg from "@/assets/pizza-reine-blanche.jpg";
-import chevreMielImg from "@/assets/pizza-chevre-miel.jpg";
+import margheritaImg from "@/assets/Pizza/Marguarita.png";
+import reginaImg from "@/assets/Pizza/ Regina.png";
+import sicillienneImg from "@/assets/Pizza/Sicilienne.png";
+import bresaneImg from "@/assets/Pizza/Bresane.png";
+import flammekuecheImg from "@/assets/Pizza/Flamekueche.png";
+import tartifletteImg from "@/assets/Pizza/tartiflette.png";
+import noapolitaineImg from "@/assets/Pizza/Napolitaine.png";
+import andalouseImg from "@/assets/Pizza/Andalouse.png";
+import thonImg from "@/assets/Pizza/Thon.png";
+import reineImg from "@/assets/Pizza/Reine.png";
+import orientaleImg from "@/assets/Pizza/Oriental.png";
+import mozzaImg from "@/assets/Pizza/Mozzarella.png";
+import bolognaiseImg from "@/assets/Pizza/Bolognaise.png";
+import cyclopeImg from "@/assets/Pizza/Cyclope.png";
+import chèvreImg from "@/assets/Pizza/Chevre.png";
+import racletteImg from "@/assets/Pizza/Raclette.png";
+import savoyardeImg from "@/assets/Pizza/Savoyarde.png";
+import quatresaisonsImg from "@/assets/Pizza/QuatreSaison.png";
+import fermièreImg from "@/assets/Pizza/Fermiere.png";
+import océaneImg from "@/assets/Pizza/Oceane.png";
+import calzoneImg from "@/assets/Pizza/Calzon.png";
+import moitmoitImg from "@/assets/Pizza/MoitMoit.png";
+import quatrefromagesImg from "@/assets/Pizza/QuatreFromage.png";
+import cinqfromagesmg from "@/assets/Pizza/CinquFromage.png";
+import { Link } from 'react-router-dom';
+
+
 
 const Carte = () => {
   const categories = [
     {
       nom: "Base Tomate",
-      description: "Nos pizzas traditionnelles sur base de sauce tomate maison",
+      description: "Nos pizzas traditionnelles sur base de sauce tomate.",
       pizzas: [
         {
-          nom: "Margherita",
-          ingredients: "Sauce tomate, mozzarella, basilic frais, huile d'olive",
-          prix: "12€",
-          vegetarienne: true,
+          nom: "Margarita",
+          ingredients: "Sauce tomate, fromage, olive",
+          prix: "9€",
           image: margheritaImg,
+        },
+        {
+          nom: "Sicilienne",
+          ingredients: "Sauce tomate, fromage, olives, anchois",
+          prix: "10€",
+          image: sicillienneImg,
         },
         {
           nom: "Regina",
-          ingredients: "Sauce tomate, mozzarella, jambon, champignons",
-          prix: "14€",
-          image: margheritaImg,
+          ingredients: "Sauce tomate, olives, jambon",
+          prix: "10€",
+          image: reginaImg,
         },
+        
         {
-          nom: "Quattro Stagioni",
-          ingredients: "Sauce tomate, mozzarella, jambon, champignons, artichauts, olives",
-          prix: "16€",
-          image: margheritaImg,
-        },
-        {
-          nom: "Diavola",
-          ingredients: "Sauce tomate, mozzarella, chorizo piquant, poivrons",
-          prix: "15€",
+          nom: "Napolitaine",
+          ingredients: "Sauce tomate, fromage, olives, anchois, câpres",
+          prix: "10,50€",
           epicee: true,
-          image: margheritaImg,
+          image: noapolitaineImg,
         },
         {
-          nom: "Napoli",
-          ingredients: "Sauce tomate, mozzarella, anchois, câpres, olives noires",
-          prix: "14€",
+          nom: "Andalouse",
+          ingredients: "Sauce tomate, fromage, olives, chorizo",
+          prix: "10,50€",
+          epicee: true,
+          image: andalouseImg,
         },
+        {
+          nom: "Thon",
+          ingredients: "Sauce tomate, fromage, olives, thon, persillade",
+          prix: "10,50€",
+          image: thonImg,
+        },
+        {
+          nom: "Reine",
+          ingredients: "Sauce tomate, fromage, olives, jambon, champignons",
+          prix: "10,50€",
+          image: reineImg,
+        },
+        {
+          nom: "Orientale",
+          ingredients: "Sauce tomate, fromage, olives, merguez, poivrons",
+          prix: "10,50€",
+          epicee: true,
+          image: orientaleImg,
+        },
+        {
+          nom: "Mozzarella",
+          ingredients: "Sauce tomate, fromage, olives, mozzarella, crème",
+          prix: "11€",
+          image: mozzaImg,
+        },
+        
+        {
+          nom: "Bolognaise",
+          ingredients: "Sauce tomate, fromage, olives, viande hachée, oignons",
+          prix: "11€",
+          image: bolognaiseImg,
+        },
+        {
+          nom: "Cyclope",
+          ingredients: "Sauce tomate, fromage, jambon, oeuf, champignons",
+          prix: "11€",
+          image: cyclopeImg,
+        },
+        {
+          nom: "Chèvre Chaud",
+          ingredients: "Sauce tomate, fromage de chèvre, emmental, olives, crème",
+          prix: "11€",
+          image: chèvreImg,
+        },
+        {
+          nom: "Raclette",
+          ingredients: "Sauce tomate, fromage à raclette, emmental, jambon",
+          prix: "11€",
+          image: racletteImg,
+        },
+        {
+          nom: "Savoyarde",
+          ingredients: "Sauce tomate, fromage, reblochon, lardons fumés, crème",
+          prix: "11,50€",
+          image: savoyardeImg,
+        },
+        {
+          nom: "Quatre Saisons",
+          ingredients: "Sauce tomate, fromage, olives, champignons, poivrons, oignons",
+          prix: "11,50€",
+          image: quatresaisonsImg,
+        },
+        {
+          nom: "Fermière",
+          ingredients: "Sauce tomate, fromage, lardons, champignons",
+          prix: "11,50€",
+          image: fermièreImg,
+        },
+        {
+          nom: "Océane",
+          ingredients: "Sauce tomate, fromage, olives, saumon fumé, crème",
+          prix: "11,50€",
+          image: océaneImg,
+        },
+        {
+          nom: "4 Fromages",
+          ingredients: "Sauce tomate, chèvre, reblochon, bleu d'Auvergne, mozzarella",
+          prix: "11,50€",
+          image: quatrefromagesImg,
+        },
+        {
+          nom: "5 Fromages",
+          ingredients: "Sauce tomate, chèvre, reblochon, bleu d'Auvergne, mozzarella, emmental, crème",
+          prix: "12,50€",
+          image: cinqfromagesmg,
+        },
+
       ],
     },
     {
       nom: "Base Crème",
-      description: "Nos créations gourmandes sur base de crème fraîche",
+      description: "Nos pizzas traditionnelles sur base de crème fraîche.",
       pizzas: [
         {
-          nom: "Reine Blanche",
-          ingredients: "Crème fraîche, mozzarella, jambon, champignons",
-          prix: "15€",
-          image: margheritaImg,
+          nom: "Bressane",
+          ingredients: "Crème fraîche, fromage, poulet, champignons",
+          prix: "11,50€",
+          image: bresaneImg,
         },
         {
-          nom: "Saumon Fumé",
-          ingredients: "Crème fraîche, mozzarella, saumon fumé, aneth, citron",
-          prix: "18€",
-        },
-        {
-          nom: "Chèvre Miel",
-          ingredients: "Crème fraîche, mozzarella, chèvre, miel, noix",
-          prix: "16€",
-          vegetarienne: true,
-          image: margheritaImg,
+          nom: "Flamekushe",
+          ingredients: "Crème fraîche, fromage, lardons, oignons",
+          prix: "11,50€",
+          image: flammekuecheImg,
         },
         {
           nom: "Tartiflette",
-          ingredients: "Crème fraîche, reblochon, pommes de terre, lardons, oignons",
-          prix: "17€",
+          ingredients: "Crème fraîche, fromage, pommes de terre, reblochon, lardons, oignons",
+          prix: "12,50€",
+          image: tartifletteImg,
         },
       ],
     },
     {
-      nom: "Végétariennes",
-      description: "Nos créations sans viande, riches en saveurs",
+      nom: "Les Spéciales",
+      description: "Nos pizzas traditionnelles spéciales, riches en saveurs.",
       pizzas: [
         {
-          nom: "Primavera",
-          ingredients: "Sauce tomate, mozzarella, courgettes, aubergines, poivrons, herbes de Provence",
-          prix: "15€",
-          vegetarienne: true,
+          nom: "Calzone",
+          ingredients: "Chausson : Sauce tomate, fromage, olives, viande hachée, mozzarella",
+          prix: "11€",
+          image: calzoneImg,
         },
         {
-          nom: "Caprese",
-          ingredients: "Sauce tomate, mozzarella, tomates cerises, basilic, roquette",
-          prix: "14€",
-          vegetarienne: true,
-        },
-        {
-          nom: "Méditerranéenne",
-          ingredients: "Sauce tomate, mozzarella, légumes grillés, olives, feta",
-          prix: "16€",
-          vegetarienne: true,
-        },
-      ],
-    },
-    {
-      nom: "Spécialités Saison",
-      description: "Nos créations qui évoluent au rythme des saisons",
-      pizzas: [
-        {
-          nom: "Truffe d'Hiver",
-          ingredients: "Crème truffée, mozzarella, champignons, jambon de Parme",
-          prix: "22€",
-          saison: "Hiver",
-        },
-        {
-          nom: "Printanière",
-          ingredients: "Sauce tomate, mozzarella, asperges, petits pois, menthe",
-          prix: "17€",
-          vegetarienne: true,
-          saison: "Printemps",
-        },
-        {
-          nom: "Estivale",
-          ingredients: "Sauce tomate, mozzarella, tomates confites, basilic, roquette",
-          prix: "16€",
-          vegetarienne: true,
-          saison: "Été",
+          nom: "Moit-Moit",
+          ingredients: "(À votre choix) 2 moitiés de pizzas différentes parmi notre carte",
+          prix: "12,50€",
+          image: moitmoitImg,
         },
       ],
     },
@@ -131,7 +204,7 @@ const Carte = () => {
 
   const getPizzaIcon = (pizza: any) => {
     if (pizza.vegetarienne) return <Leaf className="h-4 w-4 text-green-600" />;
-    if (pizza.epicee) return <Flame className="h-4 w-4 text-red-500" />;
+    if (pizza.epicee) return <Flame className="h-8 w-8 text-red-500 fill-red-500" />;
     return null;
   };
 
@@ -156,16 +229,8 @@ const Carte = () => {
         {/* Légende */}
         <div className="flex flex-wrap justify-center gap-4 mb-12 p-4 bg-muted/30 rounded-lg">
           <div className="flex items-center space-x-2">
-            <Leaf className="h-4 w-4 text-green-600" />
-            <span className="text-sm">Végétarienne</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <Flame className="h-4 w-4 text-red-500" />
+            <Flame className="h-4 w-4 text-red-500 fill-red-500" />
             <span className="text-sm">Épicée</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <Badge variant="secondary" className="text-xs">Saison</Badge>
-            <span className="text-sm">Spécialité saisonnière</span>
           </div>
         </div>
 
@@ -178,7 +243,7 @@ const Carte = () => {
               style={{ animationDelay: `${categoryIndex * 0.1}s` }}
             >
               <div className="text-center mb-8">
-                <h2 className="text-3xl font-serif font-bold text-foreground mb-2">
+                <h2 className="text-4xl font-serif font-bold text-foreground mb-2">
                   {categorie.nom}
                 </h2>
                 <p className="text-muted-foreground font-sans">
@@ -201,14 +266,6 @@ const Carte = () => {
                           alt={pizza.nom}
                           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                         />
-                        <div className="absolute top-3 right-3 flex space-x-2">
-                          {getPizzaIcon(pizza)}
-                          {pizza.saison && (
-                            <Badge variant="secondary" className="text-xs bg-background/90">
-                              {pizza.saison}
-                            </Badge>
-                          )}
-                        </div>
                       </div>
                     )}
 
@@ -216,7 +273,7 @@ const Carte = () => {
                       <CardTitle className="flex items-center justify-between">
                         <h1 className="font-serif md:text-2xl text-2xl">
                           <span
-                            className="text-black mx-1 font-extrabold mb-6 relative inline-block stroke-current"
+                            className="text-red-500 mx-1 font-extrabold mb-6 relative inline-block stroke-current"
                           >
                             {pizza.nom}
                             <svg className="absolute -bottom-0.5 w-full max-h-1.5" viewBox="0 0 55 5" xmlns="http://www.w3.org/2000/svg"
@@ -251,9 +308,11 @@ const Carte = () => {
           <p className="text-muted-foreground font-sans text-white mb-6">
             Choisissez votre point de retrait (selon les horaires d'ouverture) et l'heure qui vous convient.
           </p>
-          <Button size="lg" className="hover-lift">
-            Commander maintenant
-          </Button>
+          <Link to="/commander">
+  <Button size="lg" className="hover-lift">
+    Commander maintenant
+  </Button>
+</Link>
         </div>
       </div>
     </div>
